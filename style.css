@@ -7,8 +7,8 @@
   --text-color: white;
   --url-bg: url(assets/bg-mobile.jpg);
   --highlight-color: rgba(255, 255, 255, 0.2);
-  --stroke-color: rgba(255, 255, 255, 0.50);
-  --surface-color: rgba(255, 255, 255, 0.10);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.1);
   --surface-color-hover: rgba(255, 255, 255, 0.05);
   --switch-url-bg: url(./assets/moon-stars.svg);
 }
@@ -16,8 +16,8 @@
 .light {
   --text-color: black;
   --url-bg: url(assets/bg-mobile-light.jpg);
-  --highlight-color:rgba(0, 0, 0, 0.10) ;
-  --stroke-color: rgba(0, 0, 0, 0.50);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --stroke-color: rgba(0, 0, 0, 0.5);
   --surface-color: rgba(0, 0, 0, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.02);
   --switch-url-bg: url(./assets/sun.svg);
@@ -29,7 +29,7 @@ body {
 }
 
 body * {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   color: var(--text-color);
 }
 
@@ -59,7 +59,7 @@ body * {
   position: relative;
   width: 64px;
   margin: 4px auto;
-} 
+}
 
 #switch button {
   width: 32px;
@@ -74,11 +74,16 @@ body * {
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+
+  animation: animationSwitchDark 0.2s forwards;
 }
 
 .light #switch button {
-  left: 0;
-  right: initial;
+  animation: animationSwitchLight 0.2s forwards;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
 }
 
 #switch span {
@@ -103,8 +108,8 @@ ul {
   gap: 16px;
 }
 
-ul li a{
-  border : 1px solid var(--stroke-color);
+ul li a {
+  border: 1px solid var(--stroke-color);
   border-radius: 8px;
   background-color: var(--surface-color);
   backdrop-filter: blur(4px);
@@ -123,7 +128,7 @@ ul li a{
 
 ul li a:hover {
   background-color: var(--surface-color-hover);
-  border : 1.5px solid var(--text-color);
+  border: 1.5px solid var(--text-color);
 }
 
 #social-links {
@@ -141,7 +146,7 @@ ul li a:hover {
   align-items: center;
   justify-content: center;
   padding: 16px;
-  
+
   transition: background-color 0.2s;
   border-radius: 50%;
 }
@@ -163,5 +168,23 @@ ul li a:hover {
 
   .light {
     --url-bg: url(assets/bg-desktop-light.jpg);
+  }
+}
+
+@keyframes animationSwitchLight {
+  from {
+    right: 0;
+  }
+  to {
+    right: 50%;
+  }
+}
+
+@keyframes animationSwitchDark {
+  from {
+    right: 50%;
+  }
+  to {
+    right: 0;
   }
 }
